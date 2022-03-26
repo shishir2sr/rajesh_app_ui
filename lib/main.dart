@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return QuestionWidget(
                 getQuestions: questionList[index],
+                questionIndex: index + 1,
               );
             },
           ),

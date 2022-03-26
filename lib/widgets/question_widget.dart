@@ -5,9 +5,14 @@ import '../models/questions.dart';
 class QuestionWidget extends StatelessWidget {
   Question getQuestions;
   String? giventAns;
+  int? questionIndex;
 
-  QuestionWidget({Key? key, required this.getQuestions, this.giventAns})
-      : super(key: key);
+  QuestionWidget({
+    Key? key,
+    required this.getQuestions,
+    required this.questionIndex,
+    this.giventAns,
+  }) : super(key: key);
 
   // ignore: empty_constructor_bodies
   @override
@@ -21,7 +26,7 @@ class QuestionWidget extends StatelessWidget {
         children: [
           Spacer(),
           Text(
-            '1. ${getQuestions.questionText.toString()}',
+            '$questionIndex. ${getQuestions.questionText.toString()}',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
           ),
           const Spacer(),
