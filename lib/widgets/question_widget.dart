@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import '../models/questions.dart';
@@ -10,8 +12,8 @@ class QuestionWidget extends StatelessWidget {
   QuestionWidget({
     Key? key,
     required this.getQuestions,
-    required this.questionIndex,
     this.giventAns,
+    required this.questionIndex,
   }) : super(key: key);
 
   // ignore: empty_constructor_bodies
@@ -24,7 +26,7 @@ class QuestionWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Spacer(),
+          const Spacer(),
           Text(
             '$questionIndex. ${getQuestions.questionText.toString()}',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
@@ -42,7 +44,7 @@ class QuestionWidget extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(8),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               ClipRRect(
                 child: Image.network(
                   getQuestions.imgUrl.toString(),
@@ -54,22 +56,22 @@ class QuestionWidget extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Text('\t\t\tA. ${getQuestions.answerA.toString()}'),
-          Spacer(),
+          const Spacer(),
           Text(
             '\t\t\tB. ${getQuestions.answerB.toString()}',
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text('Correct Ans.: ${getQuestions.correctAns.toString()}'),
-              Text(
+              const Text(
                   'Given: A'), //TODO: make a function pass to the model and get the given answers value
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: const [
@@ -77,9 +79,21 @@ class QuestionWidget extends StatelessWidget {
               Text('10/10'),
             ],
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
   }
+}
+
+ListView listViewBuilder() {
+  return ListView.builder(
+    itemCount: questionList.length,
+    itemBuilder: (BuildContext context, int index) {
+      return QuestionWidget(
+        getQuestions: questionList[index],
+        questionIndex: index + 1,
+      );
+    },
+  );
 }

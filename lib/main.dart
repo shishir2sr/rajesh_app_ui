@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rajesh_ui/models/questions.dart';
 
-import 'widgets/question_widget.dart';
+import 'package:rajesh_ui/widgets/test_info_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +15,10 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: ListView.builder(
-            itemCount: questionList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return QuestionWidget(
-                getQuestions: questionList[index],
-                questionIndex: index + 1,
-              );
-            },
-          ),
+              itemCount: 10,
+              itemBuilder: (context, snapshot) {
+                return TestInfoWidget();
+              }),
         ),
       ),
     );
