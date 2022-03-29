@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           child: ListView.builder(
               itemCount: 10,
               itemBuilder: (context, snapshot) {
-                return TestInfoWidget();
+                return const TestInfoWidget();
               }),
         ),
       ),
